@@ -101,6 +101,23 @@
       gap: 1rem;
     }
   }
+
+  .secret-link {
+    position: fixed;
+    bottom: 2%;
+    left: 1%;
+    z-index: 2;
+    pointer-events: auto;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .secret-link img {
+    height: auto;
+    width: 15vw;
+    opacity: 0.5;
+  }
+
 </style>
 </head>
 <body>
@@ -123,6 +140,10 @@
       <img src="images/projects.png" alt="Projects">
     </a>
   </nav>
+
+  <a href="secret.html" class="secret-link">
+    <img src="images/drawings.png" alt="Drawings">
+  </a>
 
   <script>
     function isMobileDevice() {
