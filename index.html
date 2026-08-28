@@ -14,7 +14,6 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
 
-  /* Fullscreen background iframe */
   .bg-frame {
     position: fixed;
     top: 0;
@@ -25,7 +24,6 @@
     z-index: 0;
   }
 
-  /* Navbar: raised above the bottom, offset to the right, all in percentages */
   .navbar {
     position: fixed;
     top: 30%;
@@ -34,7 +32,7 @@
     display: flex;
     align-items: center;
     gap: 3%;
-    pointer-events: none; /* only the buttons themselves are clickable */
+    pointer-events: none;
   }
 
   .navbar a {
@@ -70,12 +68,11 @@
     transform: translateY(-3%) rotate(-2deg);
   }
 
-  /* Mobile responsiveness */
   @media (max-width: 768px) {
     .navbar {
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      top: 23%;
+      left: 65%;
+      transform: none;
       flex-direction: column;
       gap: 1.5rem;
     }
@@ -108,14 +105,13 @@
 </head>
 <body>
 
-  <!-- Desmos graph as fullscreen background -->
   <iframe
+    id="bg-frame"
     class="bg-frame"
-    src="https://www.desmos.com/calculator/6sgtszyeb1?embed"
+    src="https://www.desmos.com/calculator/e6c3ibzu4f?embed"
     allowfullscreen>
   </iframe>
 
-  <!-- Navbar: raised, offset right, buttons are just images -->
   <nav class="navbar">
     <a href="about.html" class="nav-about">
       <img src="images/about.png" alt="About">
@@ -127,6 +123,22 @@
       <img src="images/projects.png" alt="Projects">
     </a>
   </nav>
+
+  <script>
+    function isMobileDevice() {
+      return window.matchMedia("(max-width: 768px)").matches;
+    }
+
+    function setDesmosCalculator() {
+      const bgFrame = document.getElementById("bg-frame");
+      const desktopCalc = "https://www.desmos.com/calculator/6sgtszyeb1?embed";
+      const mobileCalc = "https://www.desmos.com/calculator/y1dnfv8nqk?embed";
+      
+      bgFrame.src = isMobileDevice() ? mobileCalc : desktopCalc;
+    }
+
+    setDesmosCalculator();
+  </script>
 
 </body>
 </html>
