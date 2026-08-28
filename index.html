@@ -8,7 +8,6 @@
   html, body {
     margin: 0;
     padding: 0;
-    width: 100%;
     height: 100%;
     overflow: hidden;
     background: #000;
@@ -71,38 +70,39 @@
     transform: translateY(-3%) rotate(-2deg);
   }
 
-  /* Foreground content sits on top of the graph */
-  .content {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100%;
-    pointer-events: none; /* let clicks pass through to the graph unless on interactive elements */
-    text-align: center;
-    color: #222;
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .navbar {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .navbar img {
+      width: 16vw;
+      max-width: 120px;
+      min-width: 60px;
+    }
+
+    .nav-about,
+    .nav-experience,
+    .nav-projects {
+      transform: none;
+    }
   }
 
-  .content h1 {
-    background: rgba(255, 255, 255, 0.75);
-    padding: 0.6em 1.2em;
-    border-radius: 12px;
-    font-size: 2rem;
-    margin: 0;
-    pointer-events: auto;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-  }
+  @media (max-width: 480px) {
+    .navbar img {
+      width: 18vw;
+      max-width: 90px;
+      min-width: 50px;
+    }
 
-  .content p {
-    background: rgba(255, 255, 255, 0.6);
-    padding: 0.4em 1em;
-    border-radius: 8px;
-    margin-top: 0.75em;
-    font-size: 1rem;
-    pointer-events: auto;
+    .navbar {
+      gap: 1rem;
+    }
   }
 </style>
 </head>
@@ -111,8 +111,7 @@
   <!-- Desmos graph as fullscreen background -->
   <iframe
     class="bg-frame"
-    src="https://www.desmos.com/calculator/e6c3ibzu4f?embed"
-    frameborder="0"
+    src="https://www.desmos.com/calculator/6sgtszyeb1?embed"
     allowfullscreen>
   </iframe>
 
